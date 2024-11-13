@@ -12,10 +12,11 @@ var (
 func Init() {
 	var err error
 	db, err = gorm.Open(
-		mysql.Open("root:123456@(9.134.234.41:3306)/clean_arch?charset=utf8mb4&parseTime=True&loc=Local"))
+		mysql.Open("connect your db"))
 	if err != nil {
 		panic(err)
 	}
+	SetDefault(db)
 }
 
 func DB() *gorm.DB {

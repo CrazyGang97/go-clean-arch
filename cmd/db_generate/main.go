@@ -7,10 +7,16 @@ import (
 
 func main() {
 	g := gen.NewGenerator(gen.Config{
-		OutPath: "../../internal/infra/db",
-		Mode:    gen.WithoutContext | gen.WithDefaultQuery | gen.WithQueryInterface, // generate mode
+		OutPath:      "../../internal/infra/db",
+		Mode:         gen.WithDefaultQuery, // generate mode
+		ModelPkgPath: "../../internal/infra/db/model",
 	})
 
 	db.Init()
 	g.UseDB(db.DB())
+	g.ApplyBasic(
+		g.GenerateModelAs("user", "UserPO"),
+		g.GenerateModelAs("book", "BookPO"),
+	)
+	g.Execute()
 }
