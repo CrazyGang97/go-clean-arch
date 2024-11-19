@@ -1,6 +1,8 @@
 module github.com/CrazyGang97/go-clean-arch
 
-go 1.22.6
+go 1.22.0
+
+toolchain go1.22.6
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
